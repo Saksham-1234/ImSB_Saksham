@@ -52,3 +52,6 @@ def upload_file():
         return render_template('index.html', concentration=rounded_number)
     
     return "File upload failed"
+
+if __name__ == '__main__':
+    app.run(debug=True)
