@@ -47,5 +47,3 @@ def upload_file():
     
     return "File upload failed"
 
-if __name__ == "__main__":
-    app.run()
