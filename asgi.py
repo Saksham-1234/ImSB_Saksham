@@ -2,6 +2,7 @@ import os
 from flask import Flask, request, render_template
 from PIL import Image
 import numpy as np
+from asgiref.wsgi import WsgiToAsgi
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = '/tmp/uploads'
@@ -50,3 +51,9 @@ def upload_file():
         return render_template('index.html', concentration=rounded_number)
     
     return "File upload failed"
+
+app_asgi = WsgiToAsgi(app)
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app_asgi, host="0.0.0.0", port=8000)
